@@ -2,14 +2,21 @@
 
 ## Project Description
 
-<!-- Replace this with a 2-3 sentence description of the project -->
-[TODO: Describe the project — what site, facility, or system is being documented? What is the goal of the documentation effort?]
+Jetbro runs its thought-leadership content pipeline (company LinkedIn page + related channels) entirely manually today, through 3 Google Sheets and 2 Drive folders, operated solely by Mahima. This project's goal is to design and build a portal/tool for that pipeline — not just document the current process — starting with a Phase 1 that replaces the manual bookkeeping and Drive-comment review with a single dashboard. AI-assisted drafting is a deliberate later phase.
+
+**Scope:** Jetbro's company LinkedIn page pipeline only. Rohan's personal LinkedIn content and the Sales/BD pipeline are explicitly out of scope — separate systems, not covered here.
 
 ## Domain Glossary
 
 | Term | Definition |
 |---|---|
-| <!-- Add terms as you encounter them --> | |
+| Pillar | Content category (Pillar 1–5, or Filler) a piece is classified under during screening |
+| Urgency | High (48–72h target) / Medium (1–2 weeks) / Low (evergreen/backlog) — set at screening, drives queue priority |
+| Screened | `Whats?` sheet flag; `Screened = Yes` is the trigger that hands an idea to production and freezes its `Whats?` row |
+| Overall Status | Item-level status field on the `Master Content Tracker`: `In Production` → `Partially Ready` → `All Ready` → `In Review` → `Changes Requested`/`Approved`/`Killed` → `Scheduled` → `Published` |
+| Channel cell | Per-channel readiness status on the Tracker (`—` / `To Do` / `WIP` / `Ready` / `Scheduled` / `Live`) — one per applicable channel (LinkedIn, X, Instagram, Substack, Website) |
+| Ground Rules | The 7 standards every published piece must meet (point of view, specificity, business-first framing, no unexplained jargon, one idea per post, ends with something worth responding to, never publishes without review) |
+| Tone of Voice | Jetbro's company-page voice: Authoritative, Direct, Revealing, Accessible, Approachable, Proactive — distinct from Rohan's personal LinkedIn voice, which is a separate, out-of-scope document |
 
 ## Skills
 
@@ -49,7 +56,9 @@ This project includes skills installed in `.claude/skills/`. Claude Code auto-di
 
 | Name | Role | Notes |
 |---|---|---|
-| <!-- Add team members --> | | |
+| Mahima | Producer | Runs Ingestion & Screening and Content Production end to end; owns tracker upkeep and scheduling |
+| Rohan | Approver | Default reviewer for all content — business angle, POV, voice; also a source for case-study material |
+| Sharva | Technical Reviewer | Additional reviewer for engineering-pillar / white-paper content only — technical accuracy; also a source for technical cores; not a producer |
 
 ## Branding
 
@@ -73,8 +82,6 @@ Documents carry `created:` and `updated:` dates in their frontmatter. These matt
 
 ## Project-Specific Rules
 
-<!-- Add any rules that apply only to this project -->
-<!-- Examples: -->
-<!-- - All observations must be reviewed within 48 hours of capture -->
-<!-- - Use metric units only -->
-<!-- - Reference SAP transaction codes where applicable -->
+- Sheets and Drive files (`Whats?`, `Master Content Tracker`, `Calender`, `Ingestion/`, `Production/`) are the system of record for the *current* manual process — read them directly via the existing Google service account when observing reality, rather than relying on secondhand description.
+- Any eventual solution design must keep these sheets/folders as the system of record unless a `30-analysis/` deep-dive explicitly decides otherwise — this project has previously ruled out replacing them with a standalone database (see prior work, to be re-derived here).
+- This is a from-scratch redo of an earlier pass at this same project — earlier planning existed but is being rebuilt following the process-docs skills properly this time, not reused wholesale.
