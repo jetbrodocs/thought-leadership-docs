@@ -9,3 +9,4 @@ status: active
 - [Workflow 1 — Ingestion & Screening](workflow-1-ingestion-screening.md)
 - [Workflow 2 — Content Production](workflow-2-content-production.md)
 - [Workflow 3 — Content Approval](workflow-3-content-approval.md)
+- [Observed: Review-Stage Stall](observed-review-stall.md) — directly observed operational fact (not derived from a source doc), checked live against the Tracker sheet and Slack
