@@ -53,7 +53,7 @@ A dashboard for Jetbro's thought-leadership content pipeline (company LinkedIn p
 | REQ-006 | When all applicable channel cells reach `Ready`, `Overall Status` auto-rolls to `All Ready` | `pipeline-overview.md` step 9 | Rollup is automatic; no manual click needed for the status change itself |
 | REQ-007 | Mahima can submit an `All Ready` item for review, which routes it to Rohan always and Sharva additionally if Pillar is engineering/white-paper | `pipeline-overview.md` step 10 | Sets `Overall Status = In Review`; routing is visible in the portal (who this item is waiting on) |
 | REQ-008 | Review screen lets Rohan/Sharva see every item routed to them, open the linked `production-draft-<slug>.md` for the actual review, and record a decision: Approved / Changes Requested / Killed | `pipeline-overview.md` steps 11–12 | Decision updates `Overall Status` immediately; the draft link opens the real Drive file (comments happen there, per Non-Goals) |
-| REQ-009 | Every item on the Review screen shows how long it's been waiting, with a visible flag past a threshold | `observed-review-stall.md` | Flag renders directly on the screen Rohan/Sharva actually look at — the concrete fix for the observed stall, where nothing surfaced the problem until a manual nudge; default threshold matches the 2-business-day Standard SLA (`workflow-3-content-approval.md`), configurable |
+| REQ-009 | Every item on the Review screen shows how long it's been waiting, with a visible flag once it's past its own Urgency's SLA | `observed-review-stall.md`, thresholds from `workflow-3-content-approval.md` | Flag renders directly on the screen Rohan/Sharva actually look at — the concrete fix for the observed stall, where nothing surfaced the problem until a manual nudge; threshold varies by Urgency (Filler: same-day, High: 72h, Standard: 2 business days) per the Business Rules section below |
 | REQ-010 | Changes Requested returns the item to the Production Board, visible to Mahima, with no loop limit | `pipeline-overview.md` Exception B | Matches current behavior — no artificial cap on revision rounds |
 | REQ-011 | Approved items auto-create a `Calender` row (one per applicable channel) | `pipeline-overview.md` step 13 (Handoff 3) | Calendar row(s) appear in both the portal's Calendar view and the raw `Calender` sheet, without Mahima manually copying data across |
 | REQ-012 | Mahima can flip a channel's status `Scheduled → Live` once she's actually published it on the platform | `pipeline-overview.md` step 14 | Flipping the last applicable channel to Live auto-rolls `Overall Status` to `Published` |
@@ -76,6 +76,7 @@ No new database (per `30-analysis/`). Entities are the existing Sheets/Drive obj
 - Concurrency: last-write-wins, portal always reads fresh immediately before displaying or writing (per `30-analysis/tech-stack-decision.md`) — no locking.
 - Killed items are never deleted — row stays with `Overall Status = Killed` and a `Notes` reason, matching current behavior.
 - No portal action can set `Overall Status = Approved` except a reviewer decision on the Review screen — mirrors Ground Rule 7 (nothing goes live without review); enforced in code, not just convention.
+- Staleness threshold (REQ-009) varies by Urgency, matching each item's own SLA per `workflow-3-content-approval.md` rather than one flat cutoff: Filler → flag if not decided same day; High → flag past 72h; Standard (Medium/Low) → flag past 2 business days. Decided 2026-09-11.
 
 ## Screens
 
@@ -91,6 +92,5 @@ Screen specs not yet written — next step after this PRD is confirmed, using th
 
 ## Open Questions
 
-1. **Staleness threshold (REQ-009)** — default proposed at 2 business days to match the documented Standard SLA, but Filler items have a same-day SLA and High-urgency items a 48–72h target. Should the threshold vary by Urgency, or is one flat default acceptable for Phase 1?
-2. Does a future phase revisit the Non-Goals here (Slack integration, in-portal comments) once there's actual evidence they're needed, or are these permanently out of scope for this project?
-3. Same open question as `30-analysis/tech-stack-decision.md`: if Phlo Hub turns out to be a viable host for this portal, does that change any of these screens or requirements, or just where the code lives?
+1. Does a future phase revisit the Non-Goals here (Slack integration, in-portal comments) once there's actual evidence they're needed, or are these permanently out of scope for this project?
+2. Same open question as `30-analysis/tech-stack-decision.md`: if Phlo Hub turns out to be a viable host for this portal, does that change any of these screens or requirements, or just where the code lives?
