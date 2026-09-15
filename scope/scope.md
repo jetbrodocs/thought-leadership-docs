@@ -44,7 +44,7 @@ That last point is the direct answer to a real problem: five pieces of content w
 
 - The dashboard depends on continued access to the same Google account credentials already used to manage the sheets today. If that access changes, the dashboard needs to be updated alongside it.
 - The dashboard makes waiting items visible; it does not force anyone to act on them. Its value depends on Rohan and Sharva actually checking the review view regularly, the same way any tool depends on being used.
-- **One open decision that could still change how this is built:** whether this dashboard should be built as its own standalone tool, or inside Phlo Hub, Jetbro's existing internal automation platform. This hasn't been resolved yet — it needs a conversation with whoever understands Phlo Hub's capabilities before it's settled. It does not change anything described above as Included or Not Included; it only affects where the tool technically lives.
+- This will be built as its own standalone tool, not inside Phlo Hub (Jetbro's existing internal automation platform) — that option was considered and is not being pursued.
 - This is Phase 1. If it proves useful, a later phase could add things explicitly left out here (like AI-assisted drafting) — but that would be a separate scope, signed off separately, not an automatic next step.
 
 ## Sign-Off

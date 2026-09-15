@@ -95,4 +95,7 @@ Screen specs not yet written — next step after this PRD is confirmed, using th
 ## Open Questions
 
 1. Does a future phase revisit the Non-Goals here (Slack integration, in-portal comments) once there's actual evidence they're needed, or are these permanently out of scope for this project?
-2. Same open question as `30-analysis/tech-stack-decision.md`: if Phlo Hub turns out to be a viable host for this portal, does that change any of these screens or requirements, or just where the code lives?
+
+## Closed Questions
+
+1. ~~If Phlo Hub turns out to be a viable host for this portal, does that change any of these screens or requirements?~~ **Closed 2026-09-15** — Phlo Hub integration not pursued (see `30-analysis/tech-stack-decision.md`). Standalone app stands.
