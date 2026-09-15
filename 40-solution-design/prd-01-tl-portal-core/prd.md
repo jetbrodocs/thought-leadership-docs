@@ -77,6 +77,8 @@ No new database (per `30-analysis/`). Entities are the existing Sheets/Drive obj
 - Killed items are never deleted — row stays with `Overall Status = Killed` and a `Notes` reason, matching current behavior.
 - No portal action can set `Overall Status = Approved` except a reviewer decision on the Review screen — mirrors Ground Rule 7 (nothing goes live without review); enforced in code, not just convention.
 - Staleness threshold (REQ-009) varies by Urgency, matching each item's own SLA per `workflow-3-content-approval.md` rather than one flat cutoff: Filler → flag if not decided same day; High → flag past 72h; Standard (Medium/Low) → flag past 2 business days. Decided 2026-09-11.
+- Dual-reviewer items (Rohan + Sharva, engineering/white-paper Pillar): no required consensus — whichever reviewer records a decision first is the one that moves `Overall Status`; the other sees the resolved outcome if they act afterward. Decided 2026-09-15.
+- Recording Changes Requested or Killed does not require a Notes reason — optional, matching current practice where the real detail lives in Drive comments and the Tracker `Notes` is only ever a one-line summary. Decided 2026-09-15.
 
 ## Screens
 
